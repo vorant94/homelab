@@ -1,0 +1,156 @@
+version: "3"
+
+services:
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    hostname: nginx
+    restart: unless-stopped
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - './nginx/templates:/etc/nginx/templates'
+      - './nginx/certs:/etc/ssl/certs'
+      - './nginx/private:/etc/ssl/private'
+    depends_on:
+      - pihole
+      - heimdall
+      - vaultwarden
+      - freshrss
+      - fireflyiii
+      - nextcloud
+      - jellyfin
+      - adminer
+      - archivebox
+
+  heimdall:
+    image: linuxserver/heimdall:arm64v8-latest
+    container_name: heimdall
+    hostname: heimdall
+    restart: unless-stopped
+    env_file: ./heimdall/.env
+    volumes:
+      - './heimdall/config:/config'
+
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    hostname: pihole
+    restart: unless-stopped
+    env_file: ./pihole/.env
+    ports:
+      - 53:53/tcp
+      - 53:53/udp
+      - 67:67/udp
+    volumes:
+      - './pihole/pihole:/etc/pihole'
+      - './pihole/dnsmasq.d:/etc/dnsmasq.d'
+    cap_add:
+      - NET_ADMIN
+
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    hostname: vaultwarden
+    restart: unless-stopped
+    env_file: ./vaultwarden/.env
+    volumes:
+      - './vaultwarden/data:/data'
+    depends_on:
+      - postgres
+
+  freshrss:
+    image: linuxserver/freshrss:arm64v8-latest
+    container_name: freshrss
+    hostname: freshrss
+    restart: unless-stopped
+    env_file: ./freshrss/.env
+    volumes:
+      - './freshrss/data:/var/www/FreshRSS/data'
+      - './freshrss/extensions:/var/www/FreshRSS/extensions'
+    depends_on:
+      - postgres
+      - rsshub
+
+  fireflyiii:
+    image: fireflyiii/core:latest
+    container_name: fireflyiii
+    hostname: fireflyiii
+    restart: unless-stopped
+    env_file: ./fireflyiii/.env
+    volumes:
+      - './fireflyiii/upload:/var/www/html/storage/upload'
+    depends_on:
+      - postgres
+
+  jellyfin:
+    image: jellyfin/jellyfin:latest
+    container_name: jellyfin
+    hostname: jellyfin
+    restart: unless-stopped
+    env_file: ./jellyfin/.env
+    ports:
+      - 8096:8096
+      - 8920:8920
+      - 7359:7359/udp
+      - 1900:1900/udp
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/tvshows:/data/tvshows
+      - ./jellyfin/movies:/data/movies
+
+  nextcloud:
+    image: arm64v8/nextcloud
+    container_name: nextcloud
+    hostname: nextcloud
+    restart: unless-stopped
+    env_file: ./nextcloud/.env
+    volumes:
+      - ./nextcloud/html:/var/www/html
+    depends_on:
+      - postgres
+
+  adminer:
+    image: arm64v8/adminer
+    container_name: adminer
+    hostname: adminer
+    restart: unless-stopped
+    env_file: ./adminer/.env
+    depends_on:
+      - postgres
+
+  postgres:
+    image: postgres:alpine
+    container_name: postgres
+    hostname: postgres
+    restart: unless-stopped
+    env_file: ./postgres/.env
+    volumes:
+      - './postgres/data:/var/lib/postgresql/data'
+
+  rsshub:
+    image: diygod/rsshub:chromium-bundled
+    container_name: rsshub
+    hostname: rsshub
+    restart: unless-stopped
+    env_file: ./rsshub/.env
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
+    container_name: redis
+    hostname: redis
+    restart: unless-stopped
+    volumes:
+      - './redis/data:/data'
+
+  archivebox:
+    image: archivebox/archivebox:latest
+    container_name: archivebox
+    hostname: archivebox
+    restart: unless-stopped
+    env_file: ./archivebox/.env
+    volumes:
+      - './archivebox/data:/data'
