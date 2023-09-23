@@ -13,9 +13,6 @@ docker exec -it postgres psql -U postgres
 docker compose up -d --force-recreate nginx
 ```
 
-### 
-
-
 ### regenerate ssl certificate commands example
 ```bash
 openssl genrsa -des3 -out ca.key 2048

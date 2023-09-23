@@ -32,3 +32,5 @@ ca.pem
 ca.srl
 pi.lan.csr
 pi.lan.ext
+
+.idea
