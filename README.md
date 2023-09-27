@@ -10,7 +10,7 @@ docker exec -it postgres psql -U postgres
 
 ### restart nginx
 ```bash
-docker exec -it <nginx-container> nginx -s reload
+docker exec -it nginx nginx -s reload
 ```
 
 ### regenerate ssl certificate commands example
