@@ -10,7 +10,7 @@ docker exec -it postgres psql -U postgres
 
 ### restart nginx
 ```bash
-docker compose up -d --force-recreate nginx
+docker exec -it <nginx-container> nginx -s reload
 ```
 
 ### regenerate ssl certificate commands example

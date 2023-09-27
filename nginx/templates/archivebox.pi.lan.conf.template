@@ -22,7 +22,7 @@ server {
 
     server_name archivebox.pi.lan www.archivebox.pi.lan;
 
-    client_max_body_size 100M;
+    client_max_body_size 10000M;
 
     location / {
         proxy_pass http://archivebox;

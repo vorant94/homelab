@@ -22,7 +22,7 @@ server {
 
     server_name nextcloud.pi.lan www.nextcloud.pi.lan;
 
-    client_max_body_size 100M;
+    client_max_body_size 10000M;
 
     location / {
         proxy_pass http://nextcloud;

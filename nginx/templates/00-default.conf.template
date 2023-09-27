@@ -22,8 +22,6 @@ server {
 
     server_name pi.hole www.pi.hole;
 
-    client_max_body_size 100M;
-
     location / {
         proxy_pass http://pihole;
         proxy_set_header X-Real-IP $remote_addr;

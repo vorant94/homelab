@@ -22,8 +22,6 @@ server {
 
     server_name freshrss.pi.lan www.freshrss.pi.lan;
 
-    client_max_body_size 100M;
-
     location / {
         proxy_pass http://freshrss;
         proxy_set_header X-Real-IP $remote_addr;

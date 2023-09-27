@@ -22,7 +22,7 @@ server {
 
     server_name fireflyiii.pi.lan www.fireflyiii.pi.lan;
 
-    client_max_body_size 100M;
+    client_max_body_size 10000M;
 
     location / {
         proxy_pass http://fireflyiii;
