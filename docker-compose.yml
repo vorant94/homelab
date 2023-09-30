@@ -1,4 +1,4 @@
-version: "3"
+version: '3'
 
 services:
   nginx:
@@ -7,8 +7,8 @@ services:
     hostname: nginx
     restart: unless-stopped
     ports:
-      - 80:80
-      - 443:443
+      - '80:80'
+      - '443:443'
     volumes:
       - './nginx/templates:/etc/nginx/templates'
       - './nginx/certs:/etc/ssl/certs'
@@ -40,9 +40,9 @@ services:
     restart: unless-stopped
     env_file: ./pihole/.env
     ports:
-      - 53:53/tcp
-      - 53:53/udp
-      - 67:67/udp
+      - '53:53/tcp'
+      - '53:53/udp'
+      - '67:67/udp'
     volumes:
       - './pihole/pihole:/etc/pihole'
       - './pihole/dnsmasq.d:/etc/dnsmasq.d'
@@ -91,10 +91,10 @@ services:
     restart: unless-stopped
     env_file: ./jellyfin/.env
     ports:
-      - 8096:8096
-      - 8920:8920
-      - 7359:7359/udp
-      - 1900:1900/udp
+      - '8096:8096'
+      - '8920:8920'
+      - '7359:7359/udp'
+      - '1900:1900/udp'
     volumes:
       - ./jellyfin/config:/config
       - ./jellyfin/tvshows:/data/tvshows
