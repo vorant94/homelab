@@ -1,31 +1,21 @@
+.idea
 **/.env
+**/dist
 
-archivebox/data
-
-fireflyiii/upload
-
-freshrss/data
-freshrss/extensions
-
-heimdall/config
-
-jellyfin/config
-jellyfin/movies
-jellyfin/tvshows
-
-nextcloud/html
-
-nginx/certs
-nginx/private
-
-pihole/dnsmasq.d
-pihole/pihole
-
-postgres/data
-
-redis/data
-
-vaultwarden/data
+docker/archivebox/data
+docker/freshrss/data
+docker/freshrss/extensions
+docker/heimdall/config
+docker/jellyfin/config
+docker/jellyfin/movies
+docker/jellyfin/tvshows
+docker/nginx/certs
+docker/nginx/private
+docker/pihole/dnsmasq.d
+docker/pihole/pihole
+docker/postgres/data
+docker/redis/data
+docker/vaultwarden/data
 
 ca.key
 ca.pem
@@ -33,4 +23,6 @@ ca.srl
 pi.lan.csr
 pi.lan.ext
 
-.idea
+playwright/data
+playwright/node_modules
+playwright/.tsimp

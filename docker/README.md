@@ -25,3 +25,8 @@ openssl req -new -key nginx/private/pi.lan.key -out pi.lan.csr
 
 openssl x509 -req -in pi.lan.csr -CA ca.pem -CAkey ca.key -CAcreateserial -out nginx/certs/pi.lan.crt -days 825 -sha256 -extfile pi.lan.ext
 ```
+
+### backup/restore sd card
+```bash
+tar -zcvf backup.tar.gz raspberry-pi
+```
