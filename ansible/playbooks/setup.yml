@@ -1,30 +1,34 @@
 - name: First-time Setup
   hosts: pi
-  become: yes
   tasks:
     - name: Update all packages
+      become: true
       ansible.builtin.apt:
         name: "*"
         state: latest
 
     - name: Install prerequisite packages for Docker installation
+      become: true
       ansible.builtin.apt:
         name:
           - ca-certificates
           - curl
 
     - name: Create directory for Docker GPG keyring
+      become: true
       file:
         path: /etc/apt/keyrings
         state: directory
         mode: '0755'
 
     - name: Download Docker GPG key
+      become: true
       ansible.builtin.get_url:
         url: https://download.docker.com/linux/debian/gpg
         dest: /etc/apt/keyrings/docker.asc
 
     - name: Add Docker apt repository
+      become: true
       # TODO: replace usage of changed_when with something meaningful
       changed_when: False
       ansible.builtin.shell: |
@@ -33,6 +37,7 @@
         sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
     - name: Update apt package index and install Docker packages
+      become: true
       ansible.builtin.apt:
         update_cache: yes
         name:
@@ -50,7 +55,7 @@
 
     - name: Sync docker ignored files (env, certs etc.)
       ansible.posix.synchronize:
-        # TODO: use relative path here
-        src: ~/git/homelab/docker
-        dest: ~/homelab/docker
+        # TODO: use relative path of control machine here
+        src: ~/git/homelab/docker/
+        dest: ~/homelab/docker/
 
