@@ -1,6 +1,6 @@
 .idea
-**/.env
-**/dist
+
+ansible/inventory.ini
 
 docker/archivebox/data
 docker/freshrss/data
@@ -16,13 +16,16 @@ docker/pihole/pihole
 docker/postgres/data
 docker/redis/data
 docker/vaultwarden/data
-
-ca.key
-ca.pem
-ca.srl
-pi.lan.csr
-pi.lan.ext
+docker/ca.key
+docker/ca.pem
+docker/ca.srl
+docker/pi.lan.csr
+docker/pi.lan.ext
+docker/**/.env
 
 playwright/data
+playwright/.env
 playwright/node_modules
 playwright/.tsimp
+playwright/dist
+

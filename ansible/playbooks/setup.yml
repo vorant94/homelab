@@ -1,0 +1,56 @@
+- name: First-time Setup
+  hosts: pi
+  become: yes
+  tasks:
+    - name: Update all packages
+      ansible.builtin.apt:
+        name: "*"
+        state: latest
+
+    - name: Install prerequisite packages for Docker installation
+      ansible.builtin.apt:
+        name:
+          - ca-certificates
+          - curl
+
+    - name: Create directory for Docker GPG keyring
+      file:
+        path: /etc/apt/keyrings
+        state: directory
+        mode: '0755'
+
+    - name: Download Docker GPG key
+      ansible.builtin.get_url:
+        url: https://download.docker.com/linux/debian/gpg
+        dest: /etc/apt/keyrings/docker.asc
+
+    - name: Add Docker apt repository
+      # TODO: replace usage of changed_when with something meaningful
+      changed_when: False
+      ansible.builtin.shell: |
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+        $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+        sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+    - name: Update apt package index and install Docker packages
+      ansible.builtin.apt:
+        update_cache: yes
+        name:
+          - docker-ce
+          - docker-ce-cli
+          - containerd.io
+          - docker-buildx-plugin
+          - docker-compose-plugin
+
+    - name: Pull homelab
+      ansible.builtin.git:
+        repo: https://github.com/vorant94/homelab.git
+        dest: ~/homelab
+        force: true
+
+    - name: Sync docker ignored files (env, certs etc.)
+      ansible.posix.synchronize:
+        # TODO: use relative path here
+        src: ~/git/homelab/docker
+        dest: ~/homelab/docker
+
