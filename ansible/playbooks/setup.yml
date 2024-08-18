@@ -16,7 +16,7 @@
           - curl
 
     - name: Create directory for Docker GPG keyring
-      file:
+      ansible.builtin.file:
         path: /etc/apt/keyrings
         state: directory
         mode: '0755'
@@ -44,15 +44,9 @@
           - docker-buildx-plugin
           - docker-compose-plugin
 
-    - name: Pull homelab
-      ansible.builtin.git:
-        repo: https://github.com/vorant94/homelab.git
-        dest: "{{ homelab_dir }}"
-        force: true
+    - name: Sync homelab files
+      ansible.builtin.import_tasks:
+        file: ./shared/sync-homelab.yml
 
-    - name: Sync docker ignored files (env, certs etc.)
-      ansible.posix.synchronize:
-        # TODO: use relative project path of control machine here
-        src: ~/git/homelab/docker/
-        dest: "{{ homelab_dir }}/docker/"
+
 
