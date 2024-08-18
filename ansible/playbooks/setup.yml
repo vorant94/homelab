@@ -6,8 +6,9 @@
   tasks:
     - name: Update all packages
       ansible.builtin.apt:
-        name: "*"
+				update_cache: true
         state: latest
+        name: "*"
 
     - name: Install prerequisite packages for Docker installation
       ansible.builtin.apt:
@@ -28,7 +29,7 @@
 
     - name: Add Docker apt repository
       # TODO: replace usage of changed_when with something meaningful
-      changed_when: False
+      changed_when: false
       ansible.builtin.shell: |
         echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
         $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
@@ -36,7 +37,7 @@
 
     - name: Update apt package index and install Docker packages
       ansible.builtin.apt:
-        update_cache: yes
+        update_cache: true
         name:
           - docker-ce
           - docker-ce-cli
