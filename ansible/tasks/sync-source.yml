@@ -1,14 +1,17 @@
-# Sync homelab files
+# Sync source
 ---
-- name: Pull homelab
+- name: Pull repo
+  # TODO try to avoid become: true here
+  become: true
   ansible.builtin.git:
     repo: https://github.com/vorant94/homelab.git
-    dest: "{{ homelab_dir }}"
     force: true
+    dest: "{{ homelab_dir }}"
 
 - name: Sync docker ignored files (env, certs etc.)
+  # TODO try to avoid become: true here
+  become: true
   ansible.posix.synchronize:
-    # TODO: use relative project path of control machine here
-    src: ~/git/homelab/docker/
+    src: ../../docker/
     dest: "{{ homelab_dir }}/docker/"
 

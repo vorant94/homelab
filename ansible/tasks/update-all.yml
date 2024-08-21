@@ -1,0 +1,8 @@
+# Update all
+---
+- name: Update all
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    state: latest
+    name: "*"

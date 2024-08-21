@@ -1,0 +1,42 @@
+# Install docker
+---
+- name: Install prerequisite packages for Docker installation
+  become: true
+  ansible.builtin.apt:
+    name:
+      - ca-certificates
+      - curl
+
+- name: Create directory for Docker GPG keyring
+  become: true
+  ansible.builtin.file:
+    path: /etc/apt/keyrings
+    state: directory
+    mode: '0755'
+
+- name: Download Docker GPG key
+  become: true
+  ansible.builtin.get_url:
+    url: https://download.docker.com/linux/debian/gpg
+    dest: /etc/apt/keyrings/docker.asc
+
+- name: Add Docker apt repository
+  become: true
+  # TODO: replace usage of changed_when with something meaningful
+  changed_when: false
+  ansible.builtin.shell: |
+    echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
+    $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+    sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+
+- name: Update apt package index and install Docker packages
+  become: true
+  ansible.builtin.apt:
+    update_cache: true
+    name:
+      - docker-ce
+      - docker-ce-cli
+      - containerd.io
+      - docker-buildx-plugin
+      - docker-compose-plugin
+
