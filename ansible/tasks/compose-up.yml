@@ -1,0 +1,6 @@
+# Docker Compose Up
+---
+- name: Docker Compose Up
+  become: true
+  community.docker.docker_compose_v2:
+    project_src: "{{ homelab_dir }}/docker/"

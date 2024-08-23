@@ -1,6 +1,6 @@
-# Update all
+# APT Update
 ---
-- name: Update all
+- name: APT Update
   become: true
   ansible.builtin.apt:
     update_cache: true

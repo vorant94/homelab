@@ -1,4 +1,4 @@
-# Sync source
+# Push source
 ---
 - name: Pull repo
   # TODO try to avoid become: true here
@@ -8,7 +8,7 @@
     force: true
     dest: "{{ homelab_dir }}"
 
-- name: Sync docker ignored files (env, certs etc.)
+- name: Push docker ignored files (env, certs etc.)
   # TODO try to avoid become: true here
   become: true
   ansible.posix.synchronize:

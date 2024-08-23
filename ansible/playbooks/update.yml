@@ -1,4 +1,4 @@
-- name: Setup
+- name: Update
   hosts: pi
   vars:
     - homelab_dir: /home/vorant94/homelab
@@ -6,10 +6,6 @@
     - name: APT Update
       ansible.builtin.import_tasks:
         file: ../tasks/apt-update.yml
-
-    - name: Install Docker
-      ansible.builtin.import_tasks:
-        file: ../tasks/install-docker.yml
 
     - name: Push source
       ansible.builtin.import_tasks:

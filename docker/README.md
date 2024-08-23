@@ -5,12 +5,12 @@ http://rsshub/telegram/channelcroaking_sparrow
 
 ### enter postgres
 ```bash
-docker exec -it postgres psql -U postgres
+sudo docker exec -it postgres psql -U postgres
 ```
 
 ### restart nginx
 ```bash
-docker exec -it nginx nginx -s reload
+sudo docker exec -it nginx nginx -s reload
 ```
 
 ### regenerate ssl certificate commands example
