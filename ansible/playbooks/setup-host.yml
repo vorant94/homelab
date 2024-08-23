@@ -1,7 +1,7 @@
 - name: Setup Host
   hosts: pi
   vars:
-    - homelab_dir: /home/vorant94/homelab
+    homelab_dir: /home/vorant94/homelab
   tasks:
     - name: APT Update
       ansible.builtin.import_tasks:

@@ -1,7 +1,7 @@
 - name: Setup Containers
   hosts: pi
   vars:
-    - homelab_dir: /home/vorant94/homelab
+    homelab_dir: /home/vorant94/homelab
   tasks:
     - name: Compose Up
       ansible.builtin.import_tasks:
