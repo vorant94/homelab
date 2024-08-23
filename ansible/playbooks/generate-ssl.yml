@@ -1,0 +1,63 @@
+- name: Generate SSL
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Generate Key
+      ansible.builtin.shell:
+        chdir: ../ssl
+        cmd: |
+          openssl genrsa \
+          -passout pass:{{ lookup('env','SSL_PEM_PASS_PHRASE') }} \
+          -des3 \
+          -out ca.key \
+          2048
+
+    - name: Generate PEM
+      ansible.builtin.shell:
+        chdir: ../ssl
+        cmd: |
+          openssl req \
+          -x509 \
+          -new \
+          -nodes \
+          -key ca.key \
+          -sha256 \
+          -days 1825 \
+          -passin pass:{{ lookup('env','SSL_PEM_PASS_PHRASE') }} \
+          -subj "/C=IL/ST=Israel/L=Modiin/O=homelab/OU=pi/CN=vorant94/emailAddress=vorant94@pm.me" \
+          -out ca.pem
+
+    - name: Generate pi.lan KEY
+      ansible.builtin.shell:
+        chdir: ../ssl
+        cmd: |
+          openssl genrsa \
+          -out pi.lan.key \
+          2048
+
+    - name: Generate pi.lan CSR
+      ansible.builtin.shell:
+        chdir: ../ssl
+        cmd: |
+          openssl req \
+          -new \
+          -key pi.lan.key \
+          -subj "/C=IL/ST=Israel/L=Modiin/O=homelab/OU=pi/CN=vorant94/emailAddress=vorant94@pm.me" \
+          -out pi.lan.csr
+
+
+    - name: Generate pi.lan CRT
+      ansible.builtin.shell:
+        chdir: ../ssl
+        cmd: |
+          openssl x509 \
+          -req \
+          -in pi.lan.csr \
+          -CA ca.pem \
+          -CAkey ca.key \
+          -CAcreateserial \
+          -passin pass:{{ lookup('env','SSL_PEM_PASS_PHRASE') }} \
+          -out pi.lan.crt \
+          -days 825 \
+          -sha256 \
+          -extfile pi.lan.ext

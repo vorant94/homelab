@@ -2,6 +2,12 @@
 
 ansible/inventory.ini
 ansible/.env
+ansible/ssl/ca.key
+ansible/ssl/ca.pem
+ansible/ssl/pi.lan.key
+ansible/ssl/pi.lan.csr
+ansible/ssl/pi.lan.crt
+ansible/ssl/ca.srl
 
 docker/archivebox/data
 docker/freshrss/data
@@ -17,11 +23,6 @@ docker/pihole/pihole
 docker/postgres/data
 docker/redis/data
 docker/vaultwarden/data
-docker/ca.key
-docker/ca.pem
-docker/ca.srl
-docker/pi.lan.csr
-docker/pi.lan.ext
 docker/**/.env
 
 playwright/data
