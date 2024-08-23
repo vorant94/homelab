@@ -31,6 +31,15 @@
     src: ../../docker/pihole/.env
     dest: "{{ homelab_dir }}/docker/pihole/.env"
 
+- name: Push Pihole DNS records
+  become: true
+  ansible.builtin.copy:
+    content: |
+      {{ lookup('env','PI_IP') }}   pi.lan
+      {{ lookup('env','PI_IP') }}   vaultwarden.pi.lan
+      {{ lookup('env','PI_IP') }}   jellyfin.pi.lan
+    dest: "{{ homelab_dir }}/docker/pihole/pihole/custom.list"
+
 - name: Push Vaultwarden env
   become: true
   ansible.builtin.copy:

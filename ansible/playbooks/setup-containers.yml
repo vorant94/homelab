@@ -7,10 +7,6 @@
       ansible.builtin.import_tasks:
         file: ../tasks/compose-up.yml
 
-    - name: Setup Pihole
-      ansible.builtin.import_tasks:
-        file: ../tasks/setup-pihole.yml
-
     - name: Setup Vaultwarden
       ansible.builtin.import_tasks:
         file: ../tasks/setup-vaultwarden.yml
