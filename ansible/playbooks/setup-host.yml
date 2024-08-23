@@ -1,4 +1,4 @@
-- name: Setup
+- name: Setup Host
   hosts: pi
   vars:
     - homelab_dir: /home/vorant94/homelab

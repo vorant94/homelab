@@ -1,0 +1,17 @@
+# Setup Vaultwarden
+---
+- name: Create Vaultwarden user
+  become: true
+  # need retry here because pg container may still be starting
+  # if this task is ran immediately after docker compose up
+  register: result
+  until: result.rc == 0
+  ansible.builtin.shell: |
+    docker exec -it postgres psql -U {{ lookup('env','PG_ROOT_USERNAME') }} \
+    -c "CREATE USER {{ lookup('env','PG_VAULTWARDEN_USERNAME') }} WITH PASSWORD '{{ lookup('env','PG_VAULTWARDEN_PASSWORD') }}';"
+
+- name: Create Vaultwarden database
+  become: true
+  ansible.builtin.shell: |
+    docker exec -it postgres psql -U {{ lookup('env','PG_ROOT_USERNAME') }} \
+    -c "CREATE DATABASE {{ lookup('env','PG_VAULTWARDEN_DBNAME') }} OWNER '{{ lookup('env','PG_VAULTWARDEN_USERNAME') }}';"

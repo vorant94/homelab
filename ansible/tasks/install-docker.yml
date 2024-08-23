@@ -22,8 +22,6 @@
 
 - name: Add Docker apt repository
   become: true
-  # TODO: replace usage of changed_when with something meaningful
-  changed_when: false
   ansible.builtin.shell: |
     echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.asc] https://download.docker.com/linux/debian \
     $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \

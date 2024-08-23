@@ -1,6 +1,7 @@
 .idea
 
 ansible/inventory.ini
+ansible/.env
 
 docker/archivebox/data
 docker/freshrss/data
