@@ -52,30 +52,11 @@
 			"**/dist",
 			"**/.env",
 			"**/.DS_Store",
-			"**/data"
+			"**/data",
+			"**/.tsimp"
 		]
 	},
 	"overrides": [
-		{
-			"include": ["*.config.js"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off"
-					}
-				}
-			}
-		},
-		{
-			"include": ["*.spec.ts", "*.spec.tsx"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noNamespaceImport": "off"
-					}
-				}
-			}
-		},
 		{
 			"include": ["./tsconfig.json", "**/tsconfig.json", "**/tsconfig.*.json"],
 			"json": {

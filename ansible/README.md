@@ -15,3 +15,10 @@ MacOS:
 - Expand `Trust` section
 - Change `When using this certificate` to `Always Trust`
 - Save the changes by closing the window (you'll be prompted for password)
+
+iOS:
+
+- Send `ca.pem` to iPhone via AirDrop or any other way
+- Open `Settings` and select `Profile Downloaded`
+- Click `Install`, enter PIN and approve installation
+- Go to `Settings->General->About->Certificate Trust Settings` trust the certificate
