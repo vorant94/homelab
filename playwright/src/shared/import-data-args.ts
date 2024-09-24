@@ -12,4 +12,4 @@ const rawArgs = parseArgs({
 
 const argsSchema = z.object({ file: z.string() });
 
-export const importArgs = argsSchema.parse(rawArgs.values);
+export const importDataArgs = argsSchema.parse(rawArgs.values);

@@ -1,6 +1,6 @@
 import path from "node:path";
 import process from "node:process";
-import { importArgs } from "../shared/import-args.js";
+import { importDataArgs } from "../shared/import-data-args.js";
 import { usingPage } from "../shared/using-page.js";
 import { waitFor } from "../shared/wait-for.js";
 import { login } from "./shared/login.js";
@@ -18,7 +18,7 @@ await usingPage(async (page) => {
 		page.waitForEvent("filechooser"),
 		page.getByRole("button", { name: "Choose File" }).click(),
 	]);
-	const filePathToImport = path.join(process.cwd(), importArgs.file);
+	const filePathToImport = path.join(process.cwd(), importDataArgs.file);
 	await fileChooser.setFiles(filePathToImport);
 
 	await page.getByRole("button", { name: "Import data" }).click();

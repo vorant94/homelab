@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
 import path from "node:path";
 import process from "node:process";
-import { importArgs } from "../shared/import-args.js";
+import { importDataArgs } from "../shared/import-data-args.js";
 import { usingPage } from "../shared/using-page.js";
 import { waitFor } from "../shared/wait-for.js";
 
@@ -15,7 +15,7 @@ await usingPage(async (page) => {
 		page.waitForEvent("filechooser"),
 		page.getByRole("textbox").click(),
 	]);
-	const filePathToImport = path.join(process.cwd(), importArgs.file);
+	const filePathToImport = path.join(process.cwd(), importDataArgs.file);
 	await fileChooser.setFiles(filePathToImport);
 
 	await page.locator("footer").getByRole("button", { name: "import" }).click();
