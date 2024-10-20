@@ -5,7 +5,7 @@ import { z } from "zod";
 const env = z
 	.object({
 		// biome-ignore lint/style/useNamingConvention: env variables have different convention
-		DEBUG: z.boolean().default(false),
+		DEBUG: z.coerce.boolean().default(false),
 	})
 	.parse(process.env);
 

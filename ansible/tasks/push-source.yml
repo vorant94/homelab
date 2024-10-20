@@ -7,11 +7,25 @@
     force: true
     dest: "{{ homelab_dir }}"
 
+- name: Create a Nginx private dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/nginx/private"
+    state: directory
+    mode: '0777'
+
 - name: Push Nginx pi.lan KEY
   become: true
   ansible.builtin.copy:
     src: ../ssl/pi.lan.key
     dest: "{{ homelab_dir }}/docker/nginx/private/pi.lan.key"
+
+- name: Create a Nginx certs dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/nginx/certs"
+    state: directory
+    mode: '0777'
 
 - name: Push Nginx pi.lan CRT
   become: true
@@ -19,17 +33,38 @@
     src: ../ssl/pi.lan.crt
     dest: "{{ homelab_dir }}/docker/nginx/certs/pi.lan.crt"
 
+- name: Create a Heimdall dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/heimdall"
+    state: directory
+    mode: '0777'
+
 - name: Push Heimdall env
   become: true
   ansible.builtin.copy:
     src: ../../docker/heimdall/.env
     dest: "{{ homelab_dir }}/docker/heimdall/.env"
 
+- name: Create a Pihole dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/pihole"
+    state: directory
+    mode: '0777'
+
 - name: Push Pihole env
   become: true
   ansible.builtin.copy:
     src: ../../docker/pihole/.env
     dest: "{{ homelab_dir }}/docker/pihole/.env"
+
+- name: Create a Pihole pihole dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/pihole/pihole"
+    state: directory
+    mode: '0777'
 
 - name: Push Pihole DNS records
   become: true
@@ -40,17 +75,38 @@
       {{ lookup('env','PI_IP') }}   jellyfin.pi.lan
     dest: "{{ homelab_dir }}/docker/pihole/pihole/custom.list"
 
+- name: Create a Vaultwarden dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/vaultwarden"
+    state: directory
+    mode: '0777'
+
 - name: Push Vaultwarden env
   become: true
   ansible.builtin.copy:
     src: ../../docker/vaultwarden/.env
     dest: "{{ homelab_dir }}/docker/vaultwarden/.env"
 
+- name: Create a Jellyfin dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/jellyfin"
+    state: directory
+    mode: '0777'
+
 - name: Push Jellyfin env
   become: true
   ansible.builtin.copy:
     src: ../../docker/jellyfin/.env
     dest: "{{ homelab_dir }}/docker/jellyfin/.env"
+
+- name: Create a Postgres dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/postgres"
+    state: directory
+    mode: '0777'
 
 - name: Push Postgres env
   become: true
