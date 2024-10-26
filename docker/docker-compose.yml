@@ -1,6 +1,6 @@
 services:
   nginx:
-    image: nginx:latest
+    image: nginx:1.27.1-alpine
     container_name: nginx
     hostname: nginx
     restart: unless-stopped
@@ -18,7 +18,7 @@ services:
       - jellyfin
 
   heimdall:
-    image: linuxserver/heimdall:arm64v8-latest
+    image: linuxserver/heimdall:arm64v8-2.6.1
     container_name: heimdall
     hostname: heimdall
     restart: unless-stopped
@@ -27,7 +27,7 @@ services:
       - './heimdall/config:/config'
 
   pihole:
-    image: pihole/pihole:latest
+    image: pihole/pihole:2024.07.0
     container_name: pihole
     hostname: pihole
     restart: unless-stopped
@@ -43,7 +43,7 @@ services:
       - NET_ADMIN
 
   vaultwarden:
-    image: vaultwarden/server:latest
+    image: vaultwarden/server:1.32.0-alpine
     container_name: vaultwarden
     hostname: vaultwarden
     restart: unless-stopped
@@ -54,7 +54,7 @@ services:
       - postgres
 
   jellyfin:
-    image: jellyfin/jellyfin:latest
+    image: jellyfin/jellyfin:10.9.9
     container_name: jellyfin
     hostname: jellyfin
     restart: unless-stopped
@@ -69,7 +69,7 @@ services:
       - ./jellyfin/media:/data/media
 
   postgres:
-    image: postgres:alpine
+    image: postgres:16.4-alpine
     container_name: postgres
     hostname: postgres
     restart: unless-stopped
