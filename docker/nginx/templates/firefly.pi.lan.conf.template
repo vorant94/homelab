@@ -1,10 +1,10 @@
 upstream firefly {
-    server firefly;
+    server firefly:8080;
 }
 
 server {
-    listen       8080;
-    listen  [::]:8080;
+    listen       80;
+    listen  [::]:80;
 
     server_name firefly.pi.lan www.firefly.pi.lan;
 
