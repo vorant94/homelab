@@ -16,6 +16,7 @@ services:
       - heimdall
       - vaultwarden
       - jellyfin
+      - firefly
 
   heimdall:
     image: linuxserver/heimdall:arm64v8-2.6.1
