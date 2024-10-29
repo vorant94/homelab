@@ -101,6 +101,19 @@
     src: ../../docker/jellyfin/.env
     dest: "{{ homelab_dir }}/docker/jellyfin/.env"
 
+- name: Create a Firefly dir if it does not exist
+  become: true
+  ansible.builtin.file:
+    path: "{{ homelab_dir }}/docker/firefly"
+    state: directory
+    mode: '0777'
+
+- name: Push Firefly env
+  become: true
+  ansible.builtin.copy:
+    src: ../../docker/firefly/.env
+    dest: "{{ homelab_dir }}/docker/firefly/.env"
+
 - name: Create a Postgres dir if it does not exist
   become: true
   ansible.builtin.file:

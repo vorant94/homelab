@@ -8,3 +8,4 @@ DNS.1 = pi.hole
 DNS.2 = pi.lan
 DNS.3 = vaultwarden.pi.lan
 DNS.4 = jellyfin.pi.lan
+DNS.5 = firefly.pi.lan

@@ -10,3 +10,7 @@
     - name: Setup Vaultwarden
       ansible.builtin.import_tasks:
         file: ../tasks/setup-vaultwarden.yml
+
+    - name: Setup Firefly
+      ansible.builtin.import_tasks:
+        file: ../tasks/setup-firefly.yml
