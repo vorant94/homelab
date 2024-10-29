@@ -73,6 +73,7 @@
       {{ lookup('env','PI_IP') }}   pi.lan
       {{ lookup('env','PI_IP') }}   vaultwarden.pi.lan
       {{ lookup('env','PI_IP') }}   jellyfin.pi.lan
+      {{ lookup('env','PI_IP') }}   firefly.pi.lan
     dest: "{{ homelab_dir }}/docker/pihole/pihole/custom.list"
 
 - name: Create a Vaultwarden dir if it does not exist
