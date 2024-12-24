@@ -14,8 +14,7 @@ docker/freshrss/data
 docker/freshrss/extensions
 docker/heimdall/config
 docker/jellyfin/config
-docker/jellyfin/movies
-docker/jellyfin/tvshows
+docker/jellyfin/media
 docker/nginx/certs
 docker/nginx/private
 docker/pihole/dnsmasq.d
