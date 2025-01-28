@@ -45,5 +45,15 @@ in {
         core.editor = "nano";
       };
     };
+
+    ssh = {
+      enable = true;
+
+      extraConfig = ''
+        Host github.com
+          User vorant94
+          IdentityFile ~/.ssh/id_ed25519
+      '';
+    };
   };
 }

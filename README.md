@@ -14,6 +14,8 @@
 6. Clone Homelab [repo](https://github.com/vorant94/homelab)
 7. Replace default Home Manager folder with symlink to one in repo
   - example `ln -s ~/homelab/home-manager ~/.config/home-manager`
+8. Authenticate GitHub user
+  - adding SSH key to GitHub account -> [here](https://stackoverflow.com/questions/23546865/how-to-configure-command-line-git-to-use-ssh-key)
 
 # Cheatsheet
 
