@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 let
-  nanorc = import ./nanorc.nix { inherit pkgs; };
+  nanorc = import ./dotfiles/nanorc.template.nix { inherit pkgs; };
 in {
   home = {
     username = "vorant94";
