@@ -16,6 +16,8 @@
    - example `ln -s ~/homelab/home-manager ~/.config/home-manager`
 8. Authenticate GitHub user
    - adding SSH key to GitHub account -> [here](https://stackoverflow.com/questions/23546865/how-to-configure-command-line-git-to-use-ssh-key)
+9. Install [Docker](https://docs.docker.com/engine/install/debian/)
+   - enable using `docker` without `sudo`, [here](https://docs.docker.com/engine/install/linux-postinstall/
 
 # Cheatsheet
 

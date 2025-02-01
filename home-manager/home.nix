@@ -1,11 +1,12 @@
 { config, pkgs, ... }:
 
 let
+  vars = import ./vars.nix;
   nanorc = import ./dotfiles/nanorc.template.nix { inherit pkgs; };
 in {
   home = {
-    username = "vorant94";
-    homeDirectory = "/home/vorant94";
+    username = vars.username;
+    homeDirectory = "/home/${vars.username}";
 
     stateVersion = "24.11";
 
@@ -17,14 +18,12 @@ in {
       pkgs.tmux
       pkgs.git
       pkgs.fzf
+      pkgs.neofetch
+      pkgs.zsh
     ];
 
     file = {
       ".nanorc".text = nanorc;
-    };
-
-    sessionVariables = {
-      EDITOR = "nano";
     };
   };
 
@@ -36,7 +35,7 @@ in {
     git = {
       enable = true;
       
-      userName = "vorant94";
+      userName = vars.username;
       userEmail = "vorant94@pm.me";
 
       extraConfig = {
@@ -51,9 +50,15 @@ in {
 
       extraConfig = ''
         Host github.com
-          User vorant94
+          User ${vars.username}
           IdentityFile ~/.ssh/id_ed25519
       '';
+    };
+
+    zsh = {
+      enable = true;
+
+      enableCompletion = true;
     };
   };
 }
