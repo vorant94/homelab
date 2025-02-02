@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 
 let
   vars = import ./vars.nix;
@@ -10,28 +10,13 @@ in {
 
     stateVersion = "24.11";
 
-    enableNixpkgsReleaseCheck = false;
-
-    packages = [
-      pkgs.nano
-      pkgs.nanorc
-      pkgs.tmux
-      pkgs.git
-      pkgs.fzf
-      pkgs.neofetch
-      pkgs.zsh
-    ];
-
+    
     file = {
       ".nanorc".text = nanorc;
     };
   };
 
   programs = {
-    home-manager = {
-      enable = true;
-    };
-
     git = {
       enable = true;
       
@@ -43,22 +28,6 @@ in {
         push.autoSetupRemote = true;
         core.editor = "nano";
       };
-    };
-
-    ssh = {
-      enable = true;
-
-      extraConfig = ''
-        Host github.com
-          User ${vars.username}
-          IdentityFile ~/.ssh/id_ed25519
-      '';
-    };
-
-    zsh = {
-      enable = true;
-
-      enableCompletion = true;
     };
   };
 }

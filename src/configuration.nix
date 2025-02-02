@@ -1,8 +1,7 @@
 { config, pkgs, inputs, lib, ... }:
 
 let
-  user = "vorant94";
-  hostname = "vorant94-Pi";
+  vars = import ./vars.nix;
 in {
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
@@ -23,8 +22,7 @@ in {
 
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
-    defaultSopsFormat = "yaml";
-    age.keyFile = "/home/${user}/.config/sops/age/keys.txt";
+    age.keyFile = "/home/${vars.username}/.config/sops/age/keys.txt";
 
     secrets.password = {
       neededForUsers = true;
@@ -32,7 +30,7 @@ in {
   };
 
   networking = {
-    hostName = hostname;
+    hostName = vars.hostname;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -43,13 +41,16 @@ in {
     wget
     age
     sops
+    tmux
+    fastfetch
+    fzf
   ];
 
   services.openssh.enable = true;
 
   users = {
     mutableUsers = false;
-    users."${user}" = {
+    users."${vars.username}" = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.password.path;
       extraGroups = [ "wheel" ];
