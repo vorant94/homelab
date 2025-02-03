@@ -3,6 +3,7 @@
 let
   vars = import ./vars.nix;
 in {
+
   boot = {
     kernelPackages = pkgs.linuxKernel.packages.linux_rpi4;
     initrd.availableKernelModules = [ "xhci_pci" "usbhid" "usb_storage" ];
@@ -20,6 +21,10 @@ in {
     };
   };
 
+  networking = {
+    hostName = vars.hostname;
+  };
+
   sops = {
     defaultSopsFile = ./secrets/secrets.yaml;
     age.keyFile = "/home/${vars.username}/.config/sops/age/keys.txt";
@@ -27,10 +32,6 @@ in {
     secrets.password = {
       neededForUsers = true;
     };
-  };
-
-  networking = {
-    hostName = vars.hostname;
   };
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -50,6 +51,7 @@ in {
 
   users = {
     mutableUsers = false;
+
     users."${vars.username}" = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.password.path;

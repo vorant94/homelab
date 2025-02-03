@@ -13,21 +13,22 @@
     let
       vars = import ./vars.nix;
     in {
+
       nixosConfigurations."${vars.hostname}" = nixpkgs.lib.nixosSystem {
-      system = "aarch64-linux";
-      specialArgs = { inherit inputs; };
+        system = "aarch64-linux";
+        specialArgs = { inherit inputs; };
 
-      modules = [
-        ./configuration.nix
-        sops-nix.nixosModules.sops
-        home-manager.nixosModules.home-manager
-        {
-          home-manager.useGlobalPkgs = true;
-          home-manager.useUserPackages = true;
-          home-manager.users."${vars.username}" = import ./home.nix;
-        }
-      ];
+        modules = [
+          ./configuration.nix
+          sops-nix.nixosModules.sops
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."${vars.username}" = import ./home.nix;
+          }
+        ];
+      };
+
     };
-
-  };
 }
