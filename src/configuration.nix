@@ -39,7 +39,7 @@ in {
     git
     vim
     wget
-    age
+    ssh-to-age
     sops
     tmux
     fastfetch
