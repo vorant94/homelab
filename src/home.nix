@@ -2,7 +2,7 @@
 
 let
   vars = import ./vars.nix;
-  nanorc = import ./dotfiles/nanorc.template.nix { inherit pkgs; };
+  nanorc = import ./dotfiles/.nanorc.template.nix { inherit pkgs; };
 in {
 
   home.username = vars.username;
@@ -12,6 +12,11 @@ in {
 
   home.file = {
     ".nanorc".text = nanorc;
+    ".hushlogin".source = ./dotfiles/.hushlogin;
+    ".config/oh-my-zsh" = {
+      source = ./dotfiles/oh-my-zsh;
+      recursive = true;
+    };
   };
 
   programs.git = {
@@ -33,6 +38,21 @@ in {
     extraConfig = ''
       Host github.com
         User ${vars.username}
+    '';
+  };
+
+  programs.zsh = {
+    enable = true;
+
+    enableCompletion = true;
+    syntaxHighlighting.enable = true;
+
+    oh-my-zsh.enable = true;
+    oh-my-zsh.theme = "robbyrussell";
+    oh-my-zsh.custom = "$HOME/.config/oh-my-zsh";
+
+    initExtra = ''
+      fastfetch
     '';
   };
 }

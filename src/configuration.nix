@@ -36,6 +36,8 @@ in {
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
+  environment.pathsToLink = [ "/share/zsh" ];
+
   environment.systemPackages = with pkgs; [
     git
     vim
@@ -45,12 +47,16 @@ in {
     tmux
     fastfetch
     fzf
+    zsh
   ];
 
   services.openssh.enable = true;
 
+  programs.zsh.enable = true;
+
   users = {
     mutableUsers = false;
+    defaultUserShell = pkgs.zsh;
 
     users."${vars.username}" = {
       isNormalUser = true;
