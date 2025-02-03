@@ -57,6 +57,7 @@ in {
 
       openssh.authorizedKeys.keyFiles = [
         ./authorized-keys/personal-mac.txt
+        ./authorized-keys/lightricks-mac.txt
       ];
     };
   };

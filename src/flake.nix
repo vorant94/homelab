@@ -9,13 +9,14 @@
   };
 
   outputs = { self, nixpkgs, sops-nix, home-manager, ... }@inputs:
+
     let
       vars = import ./vars.nix;
     in {
-
       nixosConfigurations."${vars.hostname}" = nixpkgs.lib.nixosSystem {
       system = "aarch64-linux";
       specialArgs = { inherit inputs; };
+
       modules = [
         ./configuration.nix
         sops-nix.nixosModules.sops
