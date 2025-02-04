@@ -48,11 +48,15 @@ in {
     fastfetch
     fzf
     zsh
+    fzf
+    fd
   ];
 
   services.openssh.enable = true;
 
   programs.zsh.enable = true;
+
+  programs.fzf.keybindings = true;
 
   users = {
     mutableUsers = false;

@@ -47,6 +47,10 @@ in {
     enableCompletion = true;
     syntaxHighlighting.enable = true;
 
+    sessionVariables = {
+      FZF_CTRL_T_COMMAND = "$FZF_DEFAULT_COMMAND";
+    };
+
     oh-my-zsh.enable = true;
     oh-my-zsh.theme = "robbyrussell";
     oh-my-zsh.custom = "$HOME/.config/oh-my-zsh";
@@ -54,5 +58,12 @@ in {
     initExtra = ''
       fastfetch
     '';
+  };
+
+  programs.fzf = {
+    enable = true;
+
+    enableZshIntegration = true;
+    defaultCommand = "fd --type f --strip-cwd-prefix";
   };
 }
