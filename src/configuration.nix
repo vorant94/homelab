@@ -48,7 +48,6 @@ in {
     fastfetch
     fzf
     zsh
-    fzf
     fd
   ];
 
