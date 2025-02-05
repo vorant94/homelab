@@ -3,8 +3,8 @@
 let
   vars = import ./vars.nix;
   nanorc = import ./dotfiles/.nanorc.template.nix { inherit pkgs; };
-in {
-
+in
+{
   home.username = vars.username;
   home.homeDirectory = "/home/${vars.username}";
 

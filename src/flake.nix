@@ -8,12 +8,19 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = { self, nixpkgs, sops-nix, home-manager, ... }@inputs:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      sops-nix,
+      home-manager,
+      ...
+    }@inputs:
 
     let
       vars = import ./vars.nix;
-    in {
-
+    in
+    {
       nixosConfigurations."${vars.hostname}" = nixpkgs.lib.nixosSystem {
         system = "aarch64-linux";
         specialArgs = { inherit inputs; };
@@ -29,6 +36,5 @@
           }
         ];
       };
-
     };
 }

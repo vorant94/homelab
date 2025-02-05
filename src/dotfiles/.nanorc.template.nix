@@ -1,4 +1,4 @@
-{pkgs}:
+{ pkgs }:
 
 ''
   include "${pkgs.nanorc}/share/*.nanorc"
