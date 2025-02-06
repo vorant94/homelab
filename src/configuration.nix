@@ -62,6 +62,7 @@ in
     fzf
     zsh
     fd
+    nixfmt-rfc-style
   ];
 
   virtualisation.docker.enable = true;
@@ -79,7 +80,10 @@ in
     users."${vars.username}" = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.password.path;
-      extraGroups = [ "wheel" "docker"];
+      extraGroups = [
+        "wheel"
+        "docker"
+      ];
 
       openssh.authorizedKeys.keyFiles = [
         ./authorized-keys/personal-mac.txt

@@ -6,6 +6,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    treefmt-nix.url = "github:numtide/treefmt-nix";
   };
 
   outputs =
@@ -14,15 +15,17 @@
       nixpkgs,
       sops-nix,
       home-manager,
+      treefmt-nix,
       ...
     }@inputs:
 
     let
       vars = import ./vars.nix;
+      treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages."${vars.system}" ./treefmt.nix;
     in
     {
       nixosConfigurations."${vars.hostname}" = nixpkgs.lib.nixosSystem {
-        system = "aarch64-linux";
+        system = vars.system;
         specialArgs = { inherit inputs; };
 
         modules = [
@@ -36,5 +39,7 @@
           }
         ];
       };
+
+      formatter."${vars.system}" = treefmtEval.config.build.wrapper;
     };
 }
