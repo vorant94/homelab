@@ -64,6 +64,8 @@ in
     fd
   ];
 
+  virtualisation.docker.enable = true;
+
   services.openssh.enable = true;
 
   programs.zsh.enable = true;
@@ -77,7 +79,7 @@ in
     users."${vars.username}" = {
       isNormalUser = true;
       hashedPasswordFile = config.sops.secrets.password.path;
-      extraGroups = [ "wheel" ];
+      extraGroups = [ "wheel" "docker"];
 
       openssh.authorizedKeys.keyFiles = [
         ./authorized-keys/personal-mac.txt
