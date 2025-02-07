@@ -71,6 +71,7 @@ in
     fd
     nixfmt-rfc-style
     bat
+    tmuxPlugins.continuum
   ];
 
   virtualisation.docker.enable = true;
