@@ -70,6 +70,7 @@ in
     zsh
     fd
     nixfmt-rfc-style
+    bat
   ];
 
   virtualisation.docker.enable = true;

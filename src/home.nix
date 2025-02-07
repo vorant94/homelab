@@ -25,6 +25,14 @@ in
     userName = vars.username;
     userEmail = "vorant94@pm.me";
 
+    aliases = {
+      s = "status -sb";
+      f = "fetch --all";
+      l = "log --graph --decorate --pretty=oneline --abbrev-commit --all";
+      d = "diff HEAD";
+      wip = "!f() { git add . && git commit -m 'Work in progress'; }; f";
+    };
+
     extraConfig = {
       init.defaultBranch = "master";
       push.autoSetupRemote = true;
@@ -49,6 +57,13 @@ in
 
     sessionVariables = {
       FZF_CTRL_T_COMMAND = "$FZF_DEFAULT_COMMAND";
+    };
+
+    shellAliases = {
+      la = "ls -lAFh";
+      c = "clear";
+      r = "source ~/.zshrc";
+      ".." = "cd ..";
     };
 
     oh-my-zsh.enable = true;
