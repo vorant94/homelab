@@ -12,7 +12,13 @@
 ## Setup Containers (WIP)
 
 1. `scp` the `docker` dir to RPi to get all the env and cert files
-2. update `docker/pihole/pihole/custom.list` with content from `push-sources.yml` "Push Pihole DNS records" task
+2. Update `docker/pihole/pihole/custom.list` with content from `push-sources.yml` "Push Pihole DNS records" task
+3. Run all the services
+
+## Setup router
+
+1. Set persistent IP address to RPi
+2. Add RPi as custom DNS (Asus RT-AX55 has out-of-the-box support for it in it's settings)
 
 # Add cert of client
 
