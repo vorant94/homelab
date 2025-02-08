@@ -73,6 +73,7 @@ in
     nixfmt-rfc-style
     bat
     tmuxPlugins.continuum
+    postgresql_16
   ];
 
   virtualisation.docker.enable = true;
