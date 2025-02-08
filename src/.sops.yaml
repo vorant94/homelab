@@ -4,7 +4,7 @@ stores:
 keys:
   - &primary age1uadm64mq374l05wsdjxn37785wqv94pp56ttmunrzq5rqack2pcqjsfafq
 creation_rules:
-  - path_regex: secrets/secrets.yaml$
+  - path_regex: shared/secrets.yaml$
     key_groups:
       - age:
           - *primary

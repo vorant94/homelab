@@ -20,7 +20,7 @@
     }@inputs:
 
     let
-      vars = import ./vars.nix;
+      vars = import ./shared/vars.nix;
       treefmtEval = treefmt-nix.lib.evalModule nixpkgs.legacyPackages."${vars.system}" ./treefmt.nix;
     in
     {
@@ -35,7 +35,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.users."${vars.username}" = import ./home.nix;
+            home-manager.users."${vars.username}" = import ./home/home.nix;
           }
         ];
       };

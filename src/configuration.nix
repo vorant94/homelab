@@ -7,7 +7,7 @@
 }:
 
 let
-  vars = import ./vars.nix;
+  vars = import ./shared/vars.nix;
 in
 {
   boot = {
@@ -37,7 +37,7 @@ in
   };
 
   sops = {
-    defaultSopsFile = ./secrets/secrets.yaml;
+    defaultSopsFile = ./shared/secrets.yaml;
     age.keyFile = "/home/${vars.username}/.config/sops/age/keys.txt";
 
     secrets.password = {
@@ -81,7 +81,6 @@ in
   services.openssh.enable = true;
 
   programs.zsh.enable = true;
-
   programs.fzf.keybindings = true;
 
   users = {
@@ -97,8 +96,8 @@ in
       ];
 
       openssh.authorizedKeys.keyFiles = [
-        ./authorized-keys/personal-mac.txt
-        ./authorized-keys/lightricks-mac.txt
+        ./home/authorized-keys/personal-mac.txt
+        ./home/authorized-keys/lightricks-mac.txt
       ];
     };
   };
