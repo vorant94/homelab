@@ -20,6 +20,7 @@ in
     loader = {
       grub.enable = false;
       generic-extlinux-compatible.enable = true;
+      systemd-boot.configurationLimit = 10;
     };
   };
 
@@ -53,7 +54,7 @@ in
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 1w";
   };
 
   environment.pathsToLink = [ "/share/zsh" ];
