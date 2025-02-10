@@ -30,10 +30,52 @@ in
       fsType = "ext4";
       options = [ "noatime" ];
     };
+
+    "/home/${vars.username}/ssd" = {
+      device = "/dev/sda1";
+      fsType = "ext4";
+      options = [
+        "defaults"
+        "nofail"
+      ];
+    };
+  };
+
+  services.samba = {
+    enable = true;
+
+    openFirewall = true;
+
+    settings = {
+      global = {
+        "server string" = "smbnix";
+        "netbios name" = "smbnix";
+        "security" = "user";
+        "guest account" = vars.username;
+        "map to guest" = "bad user";
+      };
+
+      "shared" = {
+        "path" = "/home/${vars.username}/ssd/shared";
+        "browseable" = "yes";
+        "read only" = "no";
+        "guest ok" = "yes";
+        "create mask" = "0644";
+        "directory mask" = "0755";
+      };
+    };
+  };
+
+  services.samba-wsdd = {
+    enable = true;
+    openFirewall = true;
   };
 
   networking = {
     hostName = vars.hostname;
+
+    firewall.enable = true;
+    firewall.allowPing = true;
   };
 
   sops = {
