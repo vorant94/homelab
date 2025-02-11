@@ -55,7 +55,7 @@ in
         "map to guest" = "bad user";
       };
 
-      "shared" = {
+      "public" = {
         "path" = "/home/${vars.username}/ssd/shared";
         "browseable" = "yes";
         "read only" = "no";
