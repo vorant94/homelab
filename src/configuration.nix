@@ -116,6 +116,7 @@ in
     bat
     tmuxPlugins.continuum
     postgresql_16
+    ghostty.terminfo
   ];
 
   virtualisation.docker.enable = true;
