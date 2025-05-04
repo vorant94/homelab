@@ -22,4 +22,5 @@ in
   programs.ssh = import ./programs/ssh.nix;
   programs.zsh = import ./programs/zsh.nix;
   programs.fzf = import ./programs/fzf.nix;
+  programs.tmux = import ./programs/tmux.nix;
 }

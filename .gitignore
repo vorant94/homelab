@@ -31,3 +31,5 @@ playwright/.tsimp
 playwright/dist
 
 **/*.swp
+
+**/*.save
