@@ -117,6 +117,7 @@ in
     tmuxPlugins.continuum
     postgresql_16
     ghostty.terminfo
+    starship
   ];
 
   virtualisation.docker.enable = true;

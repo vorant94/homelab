@@ -23,4 +23,5 @@ in
   programs.zsh = import ./programs/zsh.nix;
   programs.fzf = import ./programs/fzf.nix;
   programs.tmux = import ./programs/tmux.nix;
+  programs.starship = import ./programs/starship.nix;
 }
