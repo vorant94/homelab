@@ -5,9 +5,9 @@ sops encrypt pi/ssl/ca.key > pi/ssl/ca.enc.key
 sops encrypt pi/ssl/ca.srl > pi/ssl/ca.enc.srl
 sops encrypt pi/ssl/ca.pem > pi/ssl/ca.enc.pem
 
-sops encrypt docker/firefly/.env > docker/firefly/enc.env
-sops encrypt docker/heimdall/.env > docker/heimdall/enc.env
-sops encrypt docker/jellyfin/.env > docker/jellyfin/enc.env
-sops encrypt docker/pihole/.env > docker/pihole/enc.env
-sops encrypt docker/postgres/.env > docker/postgres/enc.env
-sops encrypt docker/vaultwarden/.env > docker/vaultwarden/enc.env
+sops encrypt pi/docker/firefly/.env > pi/docker/firefly/enc.env
+sops encrypt pi/docker/heimdall/.env > pi/docker/heimdall/enc.env
+sops encrypt pi/docker/jellyfin/.env > pi/docker/jellyfin/enc.env
+sops encrypt pi/docker/pihole/.env > pi/docker/pihole/enc.env
+sops encrypt pi/docker/postgres/.env > pi/docker/postgres/enc.env
+sops encrypt pi/docker/vaultwarden/.env > pi/docker/vaultwarden/enc.env

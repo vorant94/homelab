@@ -7,20 +7,20 @@ pi/ssl/pi.lan.csr
 pi/ssl/pi.lan.crt
 pi/ssl/ca.srl
 
-docker/archivebox/data
-docker/freshrss/data
-docker/freshrss/extensions
-docker/heimdall/config
-docker/jellyfin/config
-docker/jellyfin/media
-docker/nginx/certs
-docker/nginx/private
-docker/pihole/dnsmasq.d
-docker/pihole/pihole
-docker/postgres/data
-docker/redis/data
-docker/vaultwarden/data
-docker/**/.env
+pi/docker/archivebox/data
+pi/docker/freshrss/data
+pi/docker/freshrss/extensions
+pi/docker/heimdall/config
+pi/docker/jellyfin/config
+pi/docker/jellyfin/media
+pi/docker/nginx/certs
+pi/docker/nginx/private
+pi/docker/pihole/dnsmasq.d
+pi/docker/pihole/pihole
+pi/docker/postgres/data
+pi/docker/redis/data
+pi/docker/vaultwarden/data
+pi/docker/**/.env
 
 **/*.swp
 
