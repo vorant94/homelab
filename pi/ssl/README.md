@@ -1,6 +1,6 @@
 # Generate SSL
 
-Take `SSL_PEM_PASS_PHRASE` from [secrets.yaml](../nixos/shared/secrets.yaml)
+Take `SSL_PEM_PASS_PHRASE` from [secrets.yaml](.secrets.yaml)
 
 ## Generate KEY
 
