@@ -1,0 +1,13 @@
+sops decrypt ssl/pi.lan.enc.key > ssl/pi.lan.key
+sops decrypt ssl/pi.lan.enc.csr > ssl/pi.lan.csr
+sops decrypt ssl/pi.lan.enc.crt > ssl/pi.lan.crt
+sops decrypt ssl/ca.enc.key > ssl/ca.key
+sops decrypt ssl/ca.enc.srl > ssl/ca.srl
+sops decrypt ssl/ca.enc.pem > ssl/ca.pem
+
+sops decrypt docker/firefly/enc.env > docker/firefly/.env
+sops decrypt docker/heimdall/enc.env > docker/heimdall/.env
+sops decrypt docker/jellyfin/enc.env > docker/jellyfin/.env
+sops decrypt docker/pihole/enc.env > docker/pihole/.env
+sops decrypt docker/postgres/enc.env > docker/postgres/.env
+sops decrypt docker/vaultwarden/enc.env > docker/vaultwarden/.env
