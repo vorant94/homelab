@@ -9,21 +9,18 @@
 5. Create a symlink from `/etc/nixos` to this repo's `src` dir
 6. Rebuild the system
 
-## Setup Containers (WIP)
+## Setup Containers
 
 1. Decrypt SSL-realted files with `decrypt.sh`
 2. Put decrypted `pi.lan.key` into `docker/nginx/private`
 3. Put decrypted `pi.lan.crt` into `docker/nginx/certs`
-4. # TODO: add `.env` files to encrypt/decrypt scripts
 4. Update `docker/pihole/pihole/custom.list` with following content
-
-  ```
-    192.168.50.83   pi.lan
-    192.168.50.83   vaultwarden.pi.lan
-    192.168.50.83   jellyfin.pi.lan
-    192.168.50.83   firefly.pi.lan
-  ```
-
+    ```
+      192.168.50.83   pi.lan
+      192.168.50.83   vaultwarden.pi.lan
+      192.168.50.83   jellyfin.pi.lan
+      192.168.50.83   firefly.pi.lan
+    ```
 5. Run all the services
 
 ## Setup router
@@ -56,4 +53,3 @@
 1. SSH key of the machine
 2. Whole PostgreSQL instance (via `pg_dumpall`)
 3. Heimdall config (via its UI)
-4. `.env` files of containers, that use it (manually)
