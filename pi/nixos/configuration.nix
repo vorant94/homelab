@@ -118,6 +118,7 @@ in
     postgresql_16
     ghostty.terminfo
     starship
+    openssl
   ];
 
   virtualisation.docker.enable = true;

@@ -11,9 +11,20 @@
 
 ## Setup Containers (WIP)
 
-1. `scp` the `docker` dir to RPi to get all the env and cert files
-2. Update `docker/pihole/pihole/custom.list` with content from `push-sources.yml` "Push Pihole DNS records" task
-3. Run all the services
+1. Decrypt SSL-realted files with `decrypt.sh`
+2. Put decrypted `pi.lan.key` into `docker/nginx/private`
+3. Put decrypted `pi.lan.crt` into `docker/nginx/certs`
+4. # TODO: add `.env` files to encrypt/decrypt scripts
+4. Update `docker/pihole/pihole/custom.list` with following content
+
+  ```
+    192.168.50.83   pi.lan
+    192.168.50.83   vaultwarden.pi.lan
+    192.168.50.83   jellyfin.pi.lan
+    192.168.50.83   firefly.pi.lan
+  ```
+
+5. Run all the services
 
 ## Setup router
 
@@ -46,14 +57,3 @@
 2. Whole PostgreSQL instance (via `pg_dumpall`)
 3. Heimdall config (via its UI)
 4. `.env` files of containers, that use it (manually)
-5. SSL cert files of reverse proxy (manually)
-
-# Cheat sheet
-
-| Action                  | Command                                                                       |
-|-------------------------|-------------------------------------------------------------------------------|
-| ansible command example | `ansible-playbook -i inventory.ini playbooks/setup-host.yml`                  |
-| enter postgres          | `docker exec -it postgres psql -U postgres`                                   |
-| restart nginx           | `docker exec -it nginx nginx -s reload`                                       |
-| backup postgres         | `pg_dumpall -h localhost -U postgres \| gzip > full_backup.sql.gz`            |
-| restore postgres        | `gunzip -c full_backup.sql.gz \| psql -h localhost -U postgres -f - postgres` |

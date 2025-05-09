@@ -1,7 +1,0 @@
-# Compose Restart
----
-- name: Compose Restart
-  become: true
-  community.docker.docker_compose_v2:
-    project_src: "{{ homelab_dir }}/docker/"
-    state: restarted

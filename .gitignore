@@ -1,13 +1,11 @@
 .idea
 
-ansible/inventory.ini
-ansible/.env
-ansible/ssl/ca.key
-ansible/ssl/ca.pem
-ansible/ssl/pi.lan.key
-ansible/ssl/pi.lan.csr
-ansible/ssl/pi.lan.crt
-ansible/ssl/ca.srl
+pi/ssl/ca.key
+pi/ssl/ca.pem
+pi/ssl/pi.lan.key
+pi/ssl/pi.lan.csr
+pi/ssl/pi.lan.crt
+pi/ssl/ca.srl
 
 docker/archivebox/data
 docker/freshrss/data
@@ -23,12 +21,6 @@ docker/postgres/data
 docker/redis/data
 docker/vaultwarden/data
 docker/**/.env
-
-playwright/data
-playwright/.env
-playwright/node_modules
-playwright/.tsimp
-playwright/dist
 
 **/*.swp
 

@@ -1,8 +1,0 @@
-# APT Update
----
-- name: APT Update
-  become: true
-  ansible.builtin.apt:
-    update_cache: true
-    state: latest
-    name: "*"
