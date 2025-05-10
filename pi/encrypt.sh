@@ -11,3 +11,4 @@ sops encrypt docker/jellyfin/.env > docker/jellyfin/enc.env
 sops encrypt docker/pihole/.env > docker/pihole/enc.env
 sops encrypt docker/postgres/.env > docker/postgres/enc.env
 sops encrypt docker/vaultwarden/.env > docker/vaultwarden/enc.env
+sops encrypt docker/freshrss/.env > docker/freshrss/enc.env

@@ -20,6 +20,7 @@
       192.168.50.83   vaultwarden.pi.lan
       192.168.50.83   jellyfin.pi.lan
       192.168.50.83   firefly.pi.lan
+      192.168.50.83   freshrss.pi.lan
     ```
 5. Run all the services
 
@@ -35,7 +36,7 @@
 1. Open Keychain Access
 2. Go to `System->Certificates` tab
 3. Go to `File->Import Items` in top bar
-4. Select `pi.lan.crt` from `ansible/ssl`
+4. Select `ca.pem` from `ssl`
 5. Double-click on newly added item
 6. Expand `Trust` section
 7. Change `When using this certificate` to `Always Trust`

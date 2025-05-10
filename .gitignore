@@ -20,6 +20,8 @@ pi/docker/pihole/pihole
 pi/docker/postgres/data
 pi/docker/redis/data
 pi/docker/vaultwarden/data
+pi/docker/freshrss/data
+pi/docker/freshrss/extensions
 pi/docker/**/.env
 
 **/*.swp

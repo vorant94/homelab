@@ -80,6 +80,16 @@ services:
     depends_on:
       - postgres
 
+  freshrss:
+    image: freshrss/freshrss:1.26.2-alpine
+    container_name: freshrss
+    hostname: freshrss
+    restart: unless-stopped
+    env_file: freshrss/.env
+    volumes:
+      - ./freshrss/data:/var/www/FreshRSS/data
+      - ./freshrss/extensions:/var/www/FreshRSS/extensions
+
   postgres:
     image: postgres:16.4-alpine
     container_name: postgres

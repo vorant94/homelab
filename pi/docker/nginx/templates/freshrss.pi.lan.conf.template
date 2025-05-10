@@ -1,0 +1,32 @@
+upstream freshrss {
+    server freshrss;
+}
+
+server {
+    listen       80;
+    listen  [::]:80;
+
+    server_name freshrss.pi.lan www.freshrss.pi.lan;
+
+    location / {
+        return 301 https://$host$request_uri;
+    }
+}
+
+server {
+    listen      443 ssl http2;
+    listen [::]:443 ssl http2;
+
+    ssl_certificate     /etc/ssl/certs/pi.lan.crt;
+    ssl_certificate_key /etc/ssl/private/pi.lan.key;
+
+    server_name freshrss.pi.lan www.freshrss.pi.lan;
+
+    location / {
+        proxy_pass http://freshrss;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header Host $host;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header X-Forwarded-Proto $scheme;
+    }
+}

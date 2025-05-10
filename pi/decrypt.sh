@@ -11,3 +11,4 @@ sops decrypt docker/jellyfin/enc.env > docker/jellyfin/.env
 sops decrypt docker/pihole/enc.env > docker/pihole/.env
 sops decrypt docker/postgres/enc.env > docker/postgres/.env
 sops decrypt docker/vaultwarden/enc.env > docker/vaultwarden/.env
+sops decrypt docker/freshrss/enc.env > docker/freshrss/.env
