@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 sops decrypt ssl/pi.lan.enc.key > ssl/pi.lan.key
 sops decrypt ssl/pi.lan.enc.csr > ssl/pi.lan.csr
 sops decrypt ssl/pi.lan.enc.crt > ssl/pi.lan.crt
