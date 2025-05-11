@@ -1,0 +1,2 @@
+theme = dracula
+shell-integration-features = sudo

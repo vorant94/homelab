@@ -1,0 +1,29 @@
+[core]
+  editor = nano
+  autocrlf = input
+
+[user]
+  name = Mordechai Dror
+  email = vorant94@pm.me
+
+[init]
+  defaultBranch = master
+
+[alias]
+  s = "status -sb"
+  f = "fetch --all -p"
+  l = "log --graph --decorate --pretty=oneline --abbrev-commit --all"
+  d = "diff HEAD"
+  r = "reset --hard HEAD"
+  ca = "commit --amend --no-edit -a"
+  pf = "push --force"
+  wip = "!f() { git add . && git commit -m 'Work in progress'; }; f";
+
+[push]
+  autoSetupRemote = true
+
+[filter "lfs"]
+        smudge = git-lfs smudge -- %f
+        process = git-lfs filter-process
+        required = true
+        clean = git-lfs clean -- %f
