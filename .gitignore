@@ -20,6 +20,7 @@ pi/docker/pihole/pihole
 pi/docker/postgres/data
 pi/docker/redis/data
 pi/docker/vaultwarden/data
+pi/docker/isponsorblocktv/data
 pi/docker/**/.env
 
 mac/dotfiles/.config/github-copilot/apps.json

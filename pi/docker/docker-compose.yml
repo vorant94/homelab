@@ -100,3 +100,11 @@ services:
       - '5432:5432'
     volumes:
       - './postgres/data:/var/lib/postgresql/data'
+
+  isponsorblocktv:
+        image: ghcr.io/dmunozv04/isponsorblocktv
+        container_name: isponsorblocktv
+        network_mode: host
+        restart: unless-stopped
+        volumes:
+        - ./isponsorblocktv/data:/app/data
