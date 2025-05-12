@@ -1,2 +1,4 @@
 theme = dracula
 shell-integration-features = sudo
+keybind = global:alt+f12=toggle_quick_terminal
+macos-titlebar-style = tabs

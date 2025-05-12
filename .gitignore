@@ -23,9 +23,8 @@ pi/docker/vaultwarden/data
 pi/docker/isponsorblocktv/data
 pi/docker/**/.env
 
-mac/dotfiles/.config/github-copilot/apps.json
-mac/dotfiles/.config/github-copilot/ws/chat-sessions
-mac/dotfiles/.config/github-copilot/ws/chat-edit-sessions
+mac/dotfiles/.config/github-copilot
+mac/dotfiles/.config/jgit
 
 **/*.swp
 
