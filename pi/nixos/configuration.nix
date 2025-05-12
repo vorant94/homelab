@@ -71,6 +71,17 @@ in
     openFirewall = true;
   };
 
+  services.transmission = {
+    enable = true;
+    openRPCPort = true;
+    settings = {
+      download-dir = "/home/${vars.username}/ssd/shared/jellyfin";
+      rpc-bind-address = "0.0.0.0";
+      rpc-whitelist = "192.168.*.*";
+      speed-limit-up-enabled = true;
+    };
+  };
+
   networking = {
     hostName = vars.hostname;
 
