@@ -22,6 +22,6 @@ in
   programs.ssh = import ./programs/ssh.nix;
   programs.zsh = import ./programs/zsh.nix;
   programs.fzf = import ./programs/fzf.nix;
-  programs.tmux = import ./programs/tmux.nix;
+  programs.tmux = import ./programs/tmux.nix { inherit pkgs; };
   programs.starship = import ./programs/starship.nix;
 }

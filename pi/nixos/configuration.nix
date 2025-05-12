@@ -119,6 +119,7 @@ in
     ghostty.terminfo
     starship
     openssl
+    trashy
   ];
 
   virtualisation.docker.enable = true;
