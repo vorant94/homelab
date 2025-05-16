@@ -74,11 +74,13 @@ in
   services.transmission = {
     enable = true;
     openRPCPort = true;
+    user = vars.username;
     settings = {
       download-dir = "/home/${vars.username}/ssd/shared/jellyfin";
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist = "192.168.*.*";
       speed-limit-up-enabled = true;
+      incomplete-dir-enabled = false;
     };
   };
 
