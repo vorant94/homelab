@@ -80,6 +80,7 @@ in
       rpc-bind-address = "0.0.0.0";
       rpc-whitelist = "192.168.*.*";
       speed-limit-up-enabled = true;
+      speed-limit-up = 500;
       incomplete-dir-enabled = false;
     };
   };
