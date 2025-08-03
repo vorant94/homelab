@@ -40,6 +40,7 @@ services:
     volumes:
       - './pihole/pihole:/etc/pihole'
       - './pihole/dnsmasq.d:/etc/dnsmasq.d'
+      - './pihole/resolv.conf:/etc/resolv.conf'
     cap_add:
       - NET_ADMIN
 
