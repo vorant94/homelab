@@ -27,6 +27,7 @@ mac/dotfiles/.config/github-copilot
 mac/dotfiles/.config/jgit
 mac/dotfiles/.config/iterm2
 mac/dotfiles/.config/Transmission Remote GUI
+mac/dotfiles/.config/configstore
 
 **/*.swp
 **/*.save
