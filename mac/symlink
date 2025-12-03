@@ -4,5 +4,6 @@ ln -s ~/git/homelab/mac/dotfiles/.gitconfig ~/.gitconfig
 ln -s ~/git/homelab/mac/dotfiles/.nanorc ~/.nanorc
 ln -s ~/git/homelab/mac/dotfiles/.tmux.conf ~/.tmux.conf
 ln -s ~/git/homelab/mac/dotfiles/.hushlogin ~/.hushlogin
+ln -s ~/git/homelab/mac/dotfiles/.sqliterc ~/.sqliterc
 
 ln -s ~/git/homelab/mac/dotfiles/.config ~/.config
