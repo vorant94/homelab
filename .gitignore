@@ -28,6 +28,7 @@ mac/dotfiles/.config/jgit
 mac/dotfiles/.config/iterm2
 mac/dotfiles/.config/Transmission Remote GUI
 mac/dotfiles/.config/configstore
+mac/dotfiles/.config/raycast
 
 **/*.swp
 **/*.save
