@@ -30,6 +30,10 @@ mac/dotfiles/.config/Transmission Remote GUI
 mac/dotfiles/.config/configstore
 mac/dotfiles/.config/raycast
 
+
+mac/dotfiles/.config/zed/*
+!mac/dotfiles/.config/zed/settings.json
+
 **/*.swp
 **/*.save
 **/.DS_Store
